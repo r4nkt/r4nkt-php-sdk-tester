@@ -1,13 +1,9 @@
-php:
-  preset: laravel
-  disabled:
+preset: laravel
+
+disabled:
+    - alpha_ordered_imports
+    - single_class_element_per_statement
     - unused_use
-  finder:
-    not-name:
-      - index.php
-      - server.php
-js:
-  finder:
-    not-name:
-      - webpack.mix.js
-css: true
+
+enabled:
+    - length_ordered_imports
