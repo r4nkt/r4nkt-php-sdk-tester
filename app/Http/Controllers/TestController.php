@@ -6,7 +6,9 @@ use R4nkt\PhpSdk\R4nkt;
 use Illuminate\Http\Request;
 use App\Tasks\Actions\ActionsTaskGroup;
 use App\Tasks\Rewards\RewardsTaskGroup;
+use App\Tasks\Criteria\CriteriaTaskGroup;
 use App\Tasks\Achievements\AchievementsTaskGroup;
+use App\Tasks\CriteriaGroups\CriteriaGroupsTaskGroup;
 
 class TestController extends Controller
 {
@@ -23,6 +25,8 @@ class TestController extends Controller
         $this->prep();
         $this->testAchievements();
         $this->testActions();
+        $this->testCriteria();
+        // $this->testCriteriaGroups();
         $this->testRewards();
     }
 
@@ -39,6 +43,16 @@ class TestController extends Controller
     protected function testActions()
     {
         (new ActionsTaskGroup($this->r4nkt))->run();
+    }
+
+    protected function testCriteria()
+    {
+        (new CriteriaTaskGroup($this->r4nkt))->run();
+    }
+
+    protected function testCriteriaGroups()
+    {
+        // (new CriteriaGroupsTaskGroup($this->r4nkt))->run();
     }
 
     protected function testRewards()
