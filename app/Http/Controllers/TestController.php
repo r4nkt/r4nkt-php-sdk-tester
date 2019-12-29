@@ -8,6 +8,7 @@ use App\Tasks\Actions\ActionsTaskGroup;
 use App\Tasks\Rewards\RewardsTaskGroup;
 use App\Tasks\Criteria\CriteriaTaskGroup;
 use App\Tasks\Achievements\AchievementsTaskGroup;
+use App\Tasks\Leaderboards\LeaderboardsTaskGroup;
 use App\Tasks\CriteriaGroups\CriteriaGroupsTaskGroup;
 
 class TestController extends Controller
@@ -27,6 +28,7 @@ class TestController extends Controller
         $this->testActions();
         $this->testCriteria();
         // $this->testCriteriaGroups();
+        $this->testLeaderboards();
         $this->testRewards();
     }
 
@@ -53,6 +55,11 @@ class TestController extends Controller
     protected function testCriteriaGroups()
     {
         // (new CriteriaGroupsTaskGroup($this->r4nkt))->run();
+    }
+
+    protected function testLeaderboards()
+    {
+        (new LeaderboardsTaskGroup($this->r4nkt))->run();
     }
 
     protected function testRewards()
