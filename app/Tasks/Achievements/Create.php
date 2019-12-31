@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Tasks\Rewards;
+namespace App\Tasks\Achievements;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
 
-class CreateReward extends AbstractTask
+class Create extends AbstractTask
 {
-    private $reward;
+    private $achievement;
     private $customId;
     private $name;
     private $description;
@@ -24,7 +24,7 @@ class CreateReward extends AbstractTask
         $this->name = 'name' . uniqid();
         $this->description = 'description' . uniqid();
 
-        $this->reward = $this->r4nkt->createReward([
+        $this->achievement = $this->r4nkt->createAchievement([
             'custom_id' => $this->customId,
             'name' => $this->name,
             'description' => $this->description,
@@ -33,8 +33,8 @@ class CreateReward extends AbstractTask
 
     public function passed(): bool
     {
-        return (($this->reward->customId === $this->customId)
-            && ($this->reward->name === $this->name)
-            && ($this->reward->description === $this->description));
+        return (($this->achievement->customId === $this->customId)
+            && ($this->achievement->name === $this->name)
+            && ($this->achievement->description === $this->description));
     }
 }

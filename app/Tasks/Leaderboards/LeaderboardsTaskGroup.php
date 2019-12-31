@@ -11,6 +11,7 @@ class LeaderboardsTaskGroup extends TaskGroup
     {
         parent::__construct('Leaderboards');
 
+        $this->add(new ClearExistingLeaderboards($r4nkt, 'Clear Existing'));
         $this->add(new IndexEmptyLeaderboards($r4nkt, 'Index Empty'));
         $this->add(new CreateLeaderboard('leaderboard.a', $r4nkt, 'Create A'));
         $this->add(new CreateLeaderboard('leaderboard.b', $r4nkt, 'Create B'));

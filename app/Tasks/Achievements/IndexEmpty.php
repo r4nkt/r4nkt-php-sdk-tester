@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Tasks\Rewards;
+namespace App\Tasks\Achievements;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
 
-class IndexEmptyRewards extends IndexRewards
+class IndexEmpty extends Index
 {
     public function __construct(R4nkt $r4nkt, string $title = '')
     {

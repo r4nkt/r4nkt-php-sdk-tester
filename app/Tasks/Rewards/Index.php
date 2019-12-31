@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Tasks\Achievements;
+namespace App\Tasks\Rewards;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
 use Illuminate\Support\Collection;
 
-class IndexAchievements extends AbstractTask
+class Index extends AbstractTask
 {
     private $expectedCustomIds;
 
-    private $achievements;
+    private $rewards;
 
     public function __construct(Collection $expectedCustomIds, R4nkt $r4nkt, string $title = '')
     {
@@ -21,12 +21,12 @@ class IndexAchievements extends AbstractTask
 
     protected function runTask()
     {
-        $this->achievements = $this->r4nkt->achievements();
+        $this->rewards = $this->r4nkt->rewards();
     }
 
     public function passed(): bool
     {
-        $actualCustomIds = collect($this->achievements)->pluck('customId');
+        $actualCustomIds = collect($this->rewards)->pluck('customId');
 
         return (($actualCustomIds->count() === $this->expectedCustomIds->count())
             && ($this->expectedCustomIds->intersect($actualCustomIds)->count() === $this->expectedCustomIds->count()));

@@ -4,11 +4,12 @@ namespace App\Tasks\Achievements;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
-use R4nkt\PhpSdk\Exceptions\NotFoundException;
 
-class GetNonExistentAchievement extends AbstractTask
+class Get extends AbstractTask
 {
     private $customId;
+
+    private $achievement;
 
     public function __construct(string $customId, R4nkt $r4nkt, string $title = '')
     {
@@ -19,11 +20,11 @@ class GetNonExistentAchievement extends AbstractTask
 
     protected function runTask()
     {
-        $this->r4nkt->action($this->customId);
+        $this->achievement = $this->r4nkt->achievement($this->customId);
     }
 
     public function passed(): bool
     {
-        return ($this->exception instanceof NotFoundException);
+        return ($this->achievement->customId === $this->customId);
     }
 }

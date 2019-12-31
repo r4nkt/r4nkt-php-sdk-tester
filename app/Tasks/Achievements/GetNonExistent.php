@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Tasks\Rewards;
+namespace App\Tasks\Achievements;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
 use R4nkt\PhpSdk\Exceptions\NotFoundException;
 
-class GetNonExistentReward extends AbstractTask
+class GetNonExistent extends AbstractTask
 {
     private $customId;
 
@@ -19,7 +19,7 @@ class GetNonExistentReward extends AbstractTask
 
     protected function runTask()
     {
-        $this->r4nkt->reward($this->customId);
+        $this->r4nkt->action($this->customId);
     }
 
     public function passed(): bool

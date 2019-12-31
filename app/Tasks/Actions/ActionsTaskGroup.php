@@ -11,6 +11,7 @@ class ActionsTaskGroup extends TaskGroup
     {
         parent::__construct('Actions');
 
+        $this->add(new ClearExistingActions($r4nkt, 'Clear Existing'));
         $this->add(new IndexEmptyActions($r4nkt, 'Index Empty'));
         $this->add(new CreateAction('action.a', $r4nkt, 'Create A'));
         $this->add(new CreateAction('action.b', $r4nkt, 'Create B'));

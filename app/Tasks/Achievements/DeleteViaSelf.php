@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Tasks\Rewards;
+namespace App\Tasks\Achievements;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
+use R4nkt\PhpSdk\Resources\Achievement;
 
-class DeleteRewardViaR4nkt extends AbstractTask
+class DeleteViaSelf extends AbstractTask
 {
-    private $customId;
+    private $achievement;
 
     public function __construct(string $customId, R4nkt $r4nkt, string $title = '')
     {
         parent::__construct($r4nkt, $title);
 
-        $this->customId = $customId;
+        $this->achievement = new Achievement(['custom_id' => $customId], $r4nkt);
     }
 
     protected function runTask()
     {
-        $this->r4nkt->deleteReward($this->customId);
+        $this->achievement->delete();
     }
 
     public function passed(): bool

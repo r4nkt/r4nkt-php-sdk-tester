@@ -13,6 +13,8 @@ class CriteriaTaskGroup extends TaskGroup
     {
         parent::__construct('Criteria');
 
+        $this->add(new ClearExistingCriteria($r4nkt, 'Clear Existing'));
+
         $this->add(new CreateAction('action.a', $r4nkt, 'Create Action A'));
         $this->add(new CreateAction('action.b', $r4nkt, 'Create Action B'));
         $this->add(new CreateAction('action.c', $r4nkt, 'Create Action C'));

@@ -11,6 +11,7 @@ class CriteriaGroupsTaskGroup extends TaskGroup
     {
         parent::__construct('CriteriaGroups');
 
+        $this->add(new ClearExistingCriteriaGroups($r4nkt, 'Clear Existing'));
         $this->add(new IndexEmptyCriteriaGroups($r4nkt, 'Index Empty'));
         $this->add(new CreateCriteriaGroup('criteriaGroup.a', $r4nkt, 'Create A'));
         $this->add(new CreateCriteriaGroup('criteriaGroup.b', $r4nkt, 'Create B'));
