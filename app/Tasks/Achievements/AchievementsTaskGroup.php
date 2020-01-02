@@ -50,6 +50,8 @@ class AchievementsTaskGroup extends TaskGroup
 
         $this->add(new Index(collect(['achievement.a', 'achievement.b', 'achievement.c']), $r4nkt, 'Index Non-Empty'));
         $this->add(new Get('achievement.b', $r4nkt, 'Get B'));
+        $this->add(new UpdateViaSelf('achievement.b', $r4nkt, 'Update B (via self)'));
+        $this->add(new UpdateViaR4nkt('achievement.b', $r4nkt, 'Update B (via r4nkt)'));
         $this->add(new DeleteViaR4nkt('achievement.a', $r4nkt, 'Delete A (via r4nkt)'));
         $this->add(new GetNonExistent('achievement.a', $r4nkt, 'Get Deleted A (achievement.a)'));
         $this->add(new DeleteViaSelf('achievement.b', $r4nkt, 'Delete B (via self)'));
