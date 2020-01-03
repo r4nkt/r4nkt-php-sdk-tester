@@ -27,7 +27,7 @@ class TestController extends Controller
         $this->testAchievements();
         $this->testActions();
         $this->testCriteria();
-        // $this->testCriteriaGroups();
+        $this->testCriteriaGroups();
         $this->testLeaderboards();
         $this->testRewards();
     }
@@ -54,7 +54,7 @@ class TestController extends Controller
 
     protected function testCriteriaGroups()
     {
-        // (new CriteriaGroupsTaskGroup($this->r4nkt))->run();
+        (new CriteriaGroupsTaskGroup($this->r4nkt))->run();
     }
 
     protected function testLeaderboards()
