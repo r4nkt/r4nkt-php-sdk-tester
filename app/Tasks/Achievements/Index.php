@@ -26,7 +26,7 @@ class Index extends AbstractTask
 
     public function passed(): bool
     {
-        $actualCustomIds = collect($this->achievements)->pluck('customId');
+        $actualCustomIds = collect($this->achievements)->pluck('custom_id');
 
         return (($actualCustomIds->count() === $this->expectedCustomIds->count())
             && ($this->expectedCustomIds->intersect($actualCustomIds)->count() === $this->expectedCustomIds->count()));

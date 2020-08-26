@@ -26,7 +26,7 @@ class IndexActions extends AbstractTask
 
     public function passed(): bool
     {
-        $actualCustomIds = collect($this->actions)->pluck('customId');
+        $actualCustomIds = collect($this->actions)->pluck('custom_id');
 
         return (($actualCustomIds->count() === $this->expectedCustomIds->count())
             && ($this->expectedCustomIds->intersect($actualCustomIds)->count() === $this->expectedCustomIds->count()));

@@ -26,7 +26,7 @@ class IndexLeaderboards extends AbstractTask
 
     public function passed(): bool
     {
-        $actualCustomIds = collect($this->leaderboards)->pluck('customId');
+        $actualCustomIds = collect($this->leaderboards)->pluck('custom_id');
 
         return (($actualCustomIds->count() === $this->expectedCustomIds->count())
             && ($this->expectedCustomIds->intersect($actualCustomIds)->count() === $this->expectedCustomIds->count()));

@@ -26,7 +26,7 @@ class IndexCriteriaGroups extends AbstractTask
 
     public function passed(): bool
     {
-        $actualCustomIds = collect($this->criteriaGroups)->pluck('customId');
+        $actualCustomIds = collect($this->criteriaGroups)->pluck('custom_id');
 
         return (($actualCustomIds->count() === $this->expectedCustomIds->count())
             && ($this->expectedCustomIds->intersect($actualCustomIds)->count() === $this->expectedCustomIds->count()));

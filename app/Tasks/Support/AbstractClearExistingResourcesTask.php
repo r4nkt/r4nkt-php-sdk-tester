@@ -3,6 +3,7 @@
 namespace App\Tasks\Support;
 
 use App\Tasks\AbstractTask;
+use R4nkt\PhpSdk\Resources\ApiResourceCollection;
 
 abstract class AbstractClearExistingResourcesTask extends AbstractTask
 {
@@ -13,7 +14,7 @@ abstract class AbstractClearExistingResourcesTask extends AbstractTask
         });
     }
 
-    abstract protected function getResources(): array;
+    abstract protected function getResources(): ApiResourceCollection;
 
     public function passed(): bool
     {

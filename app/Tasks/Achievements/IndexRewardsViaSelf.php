@@ -30,7 +30,7 @@ class IndexRewardsViaSelf extends AbstractTask
 
     public function passed(): bool
     {
-        $actualCustomIds = collect($this->rewards)->pluck('customId');
+        $actualCustomIds = collect($this->rewards)->pluck('custom_id');
 
         return (($actualCustomIds->count() === $this->expectedCustomRewardIds->count())
             && ($this->expectedCustomRewardIds->intersect($actualCustomIds)->count() === $this->expectedCustomRewardIds->count()));

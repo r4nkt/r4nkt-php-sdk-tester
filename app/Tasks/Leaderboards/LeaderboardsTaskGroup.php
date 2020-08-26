@@ -16,6 +16,8 @@ class LeaderboardsTaskGroup extends TaskGroup
         $this->add(new CreateLeaderboard('leaderboard.a', $r4nkt, 'Create A'));
         $this->add(new CreateLeaderboard('leaderboard.b', $r4nkt, 'Create B'));
         $this->add(new CreateLeaderboard('leaderboard.c', $r4nkt, 'Create C'));
+        $this->add(new IndexEmptyLeaderboardRankings('leaderboard.c', $r4nkt, 'Index Empty Rankings (via r4nkt)'));
+
         $this->add(new IndexLeaderboards(collect(['leaderboard.a', 'leaderboard.b', 'leaderboard.c']), $r4nkt, 'Index Non-Empty'));
         $this->add(new GetLeaderboard('leaderboard.b', $r4nkt, 'Get B'));
         $this->add(new DeleteLeaderboardViaR4nkt('leaderboard.a', $r4nkt, 'Delete A (via r4nkt)'));
