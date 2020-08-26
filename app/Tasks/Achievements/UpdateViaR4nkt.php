@@ -33,7 +33,7 @@ class UpdateViaR4nkt extends AbstractTask
 
     public function passed(): bool
     {
-        return (($this->achievement->customId === $this->customId)
+        return (($this->achievement->custom_id === $this->customId)
             && ($this->achievement->name === $this->name)
             && ($this->achievement->description === $this->description));
     }

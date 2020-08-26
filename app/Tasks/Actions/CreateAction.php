@@ -33,7 +33,7 @@ class CreateAction extends AbstractTask
 
     public function passed(): bool
     {
-        return (($this->action->customId === $this->customId)
+        return (($this->action->custom_id === $this->customId)
             && ($this->action->name === $this->name)
             && ($this->action->description === $this->description));
     }

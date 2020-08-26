@@ -25,6 +25,6 @@ class GetAction extends AbstractTask
 
     public function passed(): bool
     {
-        return ($this->action->customId === $this->customId);
+        return ($this->action->custom_id === $this->customId);
     }
 }

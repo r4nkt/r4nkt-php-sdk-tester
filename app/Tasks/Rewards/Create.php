@@ -33,7 +33,7 @@ class Create extends AbstractTask
 
     public function passed(): bool
     {
-        return (($this->reward->customId === $this->customId)
+        return (($this->reward->custom_id === $this->customId)
             && ($this->reward->name === $this->name)
             && ($this->reward->description === $this->description));
     }

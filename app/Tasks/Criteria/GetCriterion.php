@@ -25,6 +25,6 @@ class GetCriterion extends AbstractTask
 
     public function passed(): bool
     {
-        return ($this->criterion->customId === $this->customId);
+        return ($this->criterion->custom_id === $this->customId);
     }
 }
