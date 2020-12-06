@@ -22,8 +22,8 @@ class DeleteActionViaAction extends AbstractTask
         $this->action->delete();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

@@ -23,7 +23,7 @@ class GetAction extends AbstractTask
         $this->action = $this->r4nkt->action($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return ($this->action->custom_id === $this->customId);
     }

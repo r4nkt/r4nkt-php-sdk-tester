@@ -23,7 +23,7 @@ class Get extends AbstractTask
         $this->achievement = $this->r4nkt->achievement($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return ($this->achievement->custom_id === $this->customId);
     }

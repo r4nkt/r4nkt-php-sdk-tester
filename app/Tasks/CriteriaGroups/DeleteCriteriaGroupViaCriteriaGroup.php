@@ -22,8 +22,8 @@ class DeleteCriteriaGroupViaCriteriaGroup extends AbstractTask
         $this->criteriaGroup->delete();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

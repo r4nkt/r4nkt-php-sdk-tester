@@ -24,7 +24,7 @@ class IndexLeaderboards extends AbstractTask
         $this->leaderboards = $this->r4nkt->leaderboards();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         $actualCustomIds = collect($this->leaderboards)->pluck('custom_id');
 

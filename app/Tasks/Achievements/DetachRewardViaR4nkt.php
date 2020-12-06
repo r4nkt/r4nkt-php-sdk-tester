@@ -23,8 +23,8 @@ class DetachRewardViaR4nkt extends AbstractTask
         $this->r4nkt->detachRewardFromAchievement($this->customId, $this->customRewardId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

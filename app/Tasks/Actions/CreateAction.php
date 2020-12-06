@@ -31,7 +31,7 @@ class CreateAction extends AbstractTask
         ]);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return (($this->action->custom_id === $this->customId)
             && ($this->action->name === $this->name)

@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Tasks\Rewards;
+namespace App\Tasks\Players;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
+use R4nkt\PhpSdk\Exceptions\NotFoundException;
 
-class DeleteViaR4nkt extends AbstractTask
+class GetNonExistent extends AbstractTask
 {
     private $customId;
 
     public function __construct(string $customId, R4nkt $r4nkt, string $title = '')
     {
-        parent::__construct($r4nkt, $title);
+        parent::__construct($r4nkt, $title, true);
 
         $this->customId = $customId;
     }
 
     protected function runTask()
     {
-        $this->r4nkt->deleteReward($this->customId);
+        $this->r4nkt->player($this->customId);
     }
 
     protected function taskPassed(): bool
     {
-        return true;
+        return $this->exception instanceof NotFoundException;
     }
 }

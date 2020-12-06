@@ -23,7 +23,7 @@ class GetLeaderboard extends AbstractTask
         $this->leaderboard = $this->r4nkt->leaderboard($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return ($this->leaderboard->custom_id === $this->customId);
     }

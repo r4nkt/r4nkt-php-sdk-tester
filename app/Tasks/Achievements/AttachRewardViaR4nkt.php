@@ -25,9 +25,8 @@ class AttachRewardViaR4nkt extends AbstractTask
         $this->reward = $this->r4nkt->attachRewardToAchievement($this->customId, $this->customRewardId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return (($this->exception === null)
-            && ($this->reward instanceof Reward));
+        return $this->reward instanceof Reward;
     }
 }

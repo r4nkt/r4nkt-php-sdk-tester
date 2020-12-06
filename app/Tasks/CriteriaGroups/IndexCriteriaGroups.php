@@ -24,7 +24,7 @@ class IndexCriteriaGroups extends AbstractTask
         $this->criteriaGroups = $this->r4nkt->criteriaGroups();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         $actualCustomIds = collect($this->criteriaGroups)->pluck('custom_id');
 

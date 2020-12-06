@@ -31,7 +31,7 @@ class Create extends AbstractTask
         ]);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return (($this->reward->custom_id === $this->customId)
             && ($this->reward->name === $this->name)

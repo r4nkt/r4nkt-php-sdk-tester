@@ -31,7 +31,7 @@ class CreateLeaderboard extends AbstractTask
         ]);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return (($this->leaderboard->custom_id === $this->customId)
             && ($this->leaderboard->name === $this->name)

@@ -31,7 +31,7 @@ class CreateCriteriaGroup extends AbstractTask
         ]);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return (($this->criteriaGroup->custom_id === $this->customId)
             && ($this->criteriaGroup->name === $this->name)

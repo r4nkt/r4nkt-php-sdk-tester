@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Tasks\Rewards;
+namespace App\Tasks\Players;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
 
-class DeleteViaR4nkt extends AbstractTask
+class Get extends AbstractTask
 {
     private $customId;
+
+    private $player;
 
     public function __construct(string $customId, R4nkt $r4nkt, string $title = '')
     {
@@ -18,11 +20,11 @@ class DeleteViaR4nkt extends AbstractTask
 
     protected function runTask()
     {
-        $this->r4nkt->deleteReward($this->customId);
+        $this->player = $this->r4nkt->player($this->customId);
     }
 
     protected function taskPassed(): bool
     {
-        return true;
+        return ($this->player->custom_id === $this->customId);
     }
 }

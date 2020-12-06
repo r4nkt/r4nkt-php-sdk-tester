@@ -23,7 +23,7 @@ class Get extends AbstractTask
         $this->reward = $this->r4nkt->reward($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return ($this->reward->custom_id === $this->customId);
     }

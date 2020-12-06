@@ -21,8 +21,8 @@ class DeleteLeaderboardViaR4nkt extends AbstractTask
         $this->r4nkt->deleteLeaderboard($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

@@ -24,7 +24,7 @@ class IndexActions extends AbstractTask
         $this->actions = $this->r4nkt->actions();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         $actualCustomIds = collect($this->actions)->pluck('custom_id');
 

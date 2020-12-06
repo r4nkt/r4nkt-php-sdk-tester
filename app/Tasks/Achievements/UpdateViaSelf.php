@@ -33,7 +33,7 @@ class UpdateViaSelf extends AbstractTask
         ]);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return (($this->achievement->custom_id === $this->customId)
             && ($this->achievement->name === $this->name)

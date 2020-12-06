@@ -9,15 +9,17 @@ abstract class AbstractClearExistingResourcesTask extends AbstractTask
 {
     protected function runTask()
     {
-        collect($this->getResources())->each(function ($resource) {
-            $resource->delete();
-        });
+        do {
+            collect($resources = $this->getResources())->each(function ($resource) {
+                $resource->delete();
+            });
+        } while ($resources->total() > ($resources->to() - $resources->from()));
     }
 
     abstract protected function getResources(): ApiResourceCollection;
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

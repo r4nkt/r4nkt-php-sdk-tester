@@ -28,7 +28,7 @@ class IndexRewardsViaSelf extends AbstractTask
         $this->rewards = $this->achievement->rewards();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         $actualCustomIds = collect($this->rewards)->pluck('custom_id');
 

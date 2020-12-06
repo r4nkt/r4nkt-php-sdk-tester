@@ -22,8 +22,8 @@ class DeleteLeaderboardViaLeaderboard extends AbstractTask
         $this->leaderboard->delete();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

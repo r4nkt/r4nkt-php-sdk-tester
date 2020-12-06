@@ -22,8 +22,8 @@ class DeleteViaSelf extends AbstractTask
         $this->reward->delete();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

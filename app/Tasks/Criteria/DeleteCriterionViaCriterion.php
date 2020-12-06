@@ -22,8 +22,8 @@ class DeleteCriterionViaCriterion extends AbstractTask
         $this->criterion->delete();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

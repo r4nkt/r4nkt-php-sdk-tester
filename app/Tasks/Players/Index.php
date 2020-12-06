@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tasks\Achievements;
+namespace App\Tasks\Players;
 
 use R4nkt\PhpSdk\R4nkt;
 use App\Tasks\AbstractTask;
@@ -10,7 +10,7 @@ class Index extends AbstractTask
 {
     private $expectedCustomIds;
 
-    private $achievements;
+    private $players;
 
     public function __construct(Collection $expectedCustomIds, R4nkt $r4nkt, string $title = '')
     {
@@ -21,12 +21,12 @@ class Index extends AbstractTask
 
     protected function runTask()
     {
-        $this->achievements = $this->r4nkt->achievements();
+        $this->players = $this->r4nkt->players();
     }
 
     protected function taskPassed(): bool
     {
-        $actualCustomIds = collect($this->achievements)->pluck('custom_id');
+        $actualCustomIds = collect($this->players)->pluck('custom_id');
 
         return (($actualCustomIds->count() === $this->expectedCustomIds->count())
             && ($this->expectedCustomIds->intersect($actualCustomIds)->count() === $this->expectedCustomIds->count()));

@@ -23,7 +23,7 @@ class GetCriterion extends AbstractTask
         $this->criterion = $this->r4nkt->criterion($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return ($this->criterion->custom_id === $this->customId);
     }

@@ -21,8 +21,8 @@ class DeleteCriterionViaR4nkt extends AbstractTask
         $this->r4nkt->deleteCriterion($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

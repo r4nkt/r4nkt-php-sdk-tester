@@ -12,7 +12,7 @@ class GetNonExistentCriterion extends AbstractTask
 
     public function __construct(string $customId, R4nkt $r4nkt, string $title = '')
     {
-        parent::__construct($r4nkt, $title);
+        parent::__construct($r4nkt, $title, true);
 
         $this->customId = $customId;
     }
@@ -22,8 +22,8 @@ class GetNonExistentCriterion extends AbstractTask
         $this->r4nkt->criterion($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception instanceof NotFoundException);
+        return $this->exception instanceof NotFoundException;
     }
 }

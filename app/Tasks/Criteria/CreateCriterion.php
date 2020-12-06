@@ -34,7 +34,7 @@ class CreateCriterion extends AbstractTask
         ]);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return (($this->criterion->custom_id === $this->customId)
             && ($this->criterion->name === $this->name)

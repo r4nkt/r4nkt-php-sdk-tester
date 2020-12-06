@@ -13,10 +13,13 @@ abstract class AbstractTask
 
     protected $title;
 
-    public function __construct(R4nkt $r4nkt, string $title = '')
+    protected $expectsException;
+
+    public function __construct(R4nkt $r4nkt, string $title = '', bool $expectsException = false)
     {
         $this->r4nkt = $r4nkt;
         $this->title = $title;
+        $this->expectsException = $expectsException;
     }
 
     public function run()
@@ -32,7 +35,17 @@ abstract class AbstractTask
 
     abstract protected function runTask();
 
-    abstract public function passed(): bool;
+    public function passed(): bool
+    {
+        if (! $this->expectsException && $this->exception) {
+            dump($this->exception);
+            return false;
+        }
+
+        return $this->taskPassed();
+    }
+
+    abstract protected function taskPassed(): bool;
 
     public function title(): string
     {

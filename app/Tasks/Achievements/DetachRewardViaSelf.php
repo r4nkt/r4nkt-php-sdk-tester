@@ -24,8 +24,8 @@ class DetachRewardViaSelf extends AbstractTask
         $this->achievement->detachReward($this->customRewardId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return ($this->exception === null);
+        return true;
     }
 }

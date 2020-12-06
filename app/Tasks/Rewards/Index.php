@@ -24,7 +24,7 @@ class Index extends AbstractTask
         $this->rewards = $this->r4nkt->rewards();
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         $actualCustomIds = collect($this->rewards)->pluck('custom_id');
 

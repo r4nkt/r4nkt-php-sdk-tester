@@ -26,9 +26,8 @@ class AttachRewardViaSelf extends AbstractTask
         $this->reward = $this->achievement->attachReward($this->customRewardId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
-        return (($this->exception === null)
-            && ($this->reward instanceof Reward));
+        return $this->reward instanceof Reward;
     }
 }

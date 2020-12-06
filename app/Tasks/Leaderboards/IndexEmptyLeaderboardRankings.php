@@ -24,7 +24,7 @@ class IndexEmptyLeaderboardRankings extends AbstractTask
         $this->rankings = $this->r4nkt->leaderboardRankings($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return (count($this->rankings) === 0);
     }

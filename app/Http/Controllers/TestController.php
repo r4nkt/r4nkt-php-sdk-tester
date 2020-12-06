@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use R4nkt\PhpSdk\R4nkt;
-use Illuminate\Http\Request;
-use App\Tasks\Actions\ActionsTaskGroup;
-use App\Tasks\Rewards\RewardsTaskGroup;
-use App\Tasks\Criteria\CriteriaTaskGroup;
 use App\Tasks\Achievements\AchievementsTaskGroup;
-use App\Tasks\Leaderboards\LeaderboardsTaskGroup;
+use App\Tasks\Actions\ActionsTaskGroup;
 use App\Tasks\CriteriaGroups\CriteriaGroupsTaskGroup;
+use App\Tasks\Criteria\CriteriaTaskGroup;
+use App\Tasks\Leaderboards\LeaderboardsTaskGroup;
+use App\Tasks\Players\PlayersTaskGroup;
+use App\Tasks\Rewards\RewardsTaskGroup;
+use App\Tasks\Scenarios\ScenariosTaskGroup;
+use Illuminate\Http\Request;
+use R4nkt\PhpSdk\R4nkt;
 
 class TestController extends Controller
 {
@@ -29,7 +31,9 @@ class TestController extends Controller
         $this->testCriteria();
         $this->testCriteriaGroups();
         $this->testLeaderboards();
+        $this->testPlayers();
         $this->testRewards();
+        $this->testScenarios();
     }
 
     protected function prep()
@@ -62,8 +66,18 @@ class TestController extends Controller
         (new LeaderboardsTaskGroup($this->r4nkt))->run();
     }
 
+    protected function testPlayers()
+    {
+        (new PlayersTaskGroup($this->r4nkt))->run();
+    }
+
     protected function testRewards()
     {
         (new RewardsTaskGroup($this->r4nkt))->run();
+    }
+
+    protected function testScenarios()
+    {
+        (new ScenariosTaskGroup($this->r4nkt))->run();
     }
 }

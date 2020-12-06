@@ -23,7 +23,7 @@ class GetCriteriaGroup extends AbstractTask
         $this->criteriaGroup = $this->r4nkt->criteriaGroup($this->customId);
     }
 
-    public function passed(): bool
+    protected function taskPassed(): bool
     {
         return ($this->criteriaGroup->custom_id === $this->customId);
     }
