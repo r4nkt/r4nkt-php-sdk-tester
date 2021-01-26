@@ -5,6 +5,7 @@ namespace App\Tasks\Scenarios;
 use App\Tasks\AbstractTask;
 use Exception;
 use Illuminate\Support\Arr;
+use R4nkt\PhpSdk\QueryParams\AchievementsParams;
 use R4nkt\PhpSdk\R4nkt;
 
 class PrepGame extends AbstractTask
@@ -20,7 +21,9 @@ class PrepGame extends AbstractTask
         $this->buildAchievements();
         $this->buildLeaderboards();
 
-        $this->count = $this->r4nkt->achievements(1, 20, 'with')->total();
+        $params = (new AchievementsParams())->withSecrets();
+
+        $this->count = $this->r4nkt->achievements($params)->total();
         $this->count += $this->r4nkt->actions()->total();
         $this->count += $this->r4nkt->criteria()->total();
         $this->count += $this->r4nkt->criteriaGroups()->total();
@@ -48,8 +51,8 @@ class PrepGame extends AbstractTask
 
     protected function checkBasics()
     {
-        $expectedCount = 32 // achievements
-            + 26 // achievement auto-created criteria groups
+        $expectedCount = 31 // achievements
+            + 25 // achievement auto-created criteria groups
             + 39 // actions
             + 38 // criteria
             + 12 // criteria groups
@@ -312,229 +315,229 @@ class PrepGame extends AbstractTask
                 'custom_id' => 'criterion.slay.a.red.dragon',
                 'name' => 'criterion.slay.a.red.dragon',
                 'custom_action_id' => 'action.slay.a.red.dragon',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.slay.10.dragons',
                 'name' => 'criterion.slay.10.dragons',
                 'custom_action_id' => 'action.slay.a.dragon',
-                'threshold' => 10,
+                'rule' => 'gte:sum,10',
             ],
             [
                 'custom_id' => 'criterion.slay.10.enemies',
                 'name' => 'criterion.slay.10.enemies',
                 'custom_action_id' => 'action.slay.an.enemy',
-                'threshold' => 10,
+                'rule' => 'gte:sum,10',
             ],
             [
                 'custom_id' => 'criterion.smash.5.doors',
                 'name' => 'criterion.smash.5.doors',
                 'custom_action_id' => 'action.smash.door',
-                'threshold' => 5,
+                'rule' => 'gte:sum,5',
             ],
             [
                 'custom_id' => 'criterion.heal.self.25.times',
                 'name' => 'criterion.heal.self.25.times',
                 'custom_action_id' => 'action.heal.self',
-                'threshold' => 25,
+                'rule' => 'gte:sum,25',
             ],
             [
                 'custom_id' => 'criterion.slay.hydra',
                 'name' => 'criterion.slay.hydra',
                 'custom_action_id' => 'action.slay.hydra',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.detect.trap',
                 'name' => 'criterion.detect.trap',
                 'custom_action_id' => 'action.detect.trap',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.detect.5.traps',
                 'name' => 'criterion.detect.5.traps',
                 'custom_action_id' => 'action.detect.trap',
-                'threshold' => 5,
+                'rule' => 'gte:sum,5',
             ],
             [
                 'custom_id' => 'criterion.disarm.trap',
                 'name' => 'criterion.disarm.trap',
                 'custom_action_id' => 'action.disarm.trap',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.disarm.5.traps',
                 'name' => 'criterion.disarm.5.traps',
                 'custom_action_id' => 'action.disarm.trap',
-                'threshold' => 5,
+                'rule' => 'gte:sum,5',
             ],
             [
                 'custom_id' => 'criterion.complete.quest',
                 'name' => 'criterion.complete.quest',
                 'custom_action_id' => 'action.complete.quest',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.break.100.breakables',
                 'name' => 'criterion.break.100.breakables',
                 'custom_action_id' => 'action.break.breakable',
-                'threshold' => 100,
+                'rule' => 'gte:sum,100',
             ],
             [
                 'custom_id' => 'criterion.solve.puzzle',
                 'name' => 'criterion.solve.puzzle',
                 'custom_action_id' => 'action.solve.puzzle',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.solve.water.chamber.puzzle',
                 'name' => 'criterion.solve.water.chamber.puzzle',
                 'custom_action_id' => 'action.solve.water.chamber.puzzle',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.solve.lava.field.puzzle',
                 'name' => 'criterion.solve.lava.field.puzzle',
                 'custom_action_id' => 'action.solve.lava.field.puzzle',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.solve.clockworks.puzzle',
                 'name' => 'criterion.solve.clockworks.puzzle',
                 'custom_action_id' => 'action.solve.clockworks.puzzle',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.solve.five.doors.puzzle',
                 'name' => 'criterion.solve.five.doors.puzzle',
                 'custom_action_id' => 'action.solve.five.doors.puzzle',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.deal.100.critical.strikes',
                 'name' => 'criterion.deal.100.critical.strikes',
                 'custom_action_id' => 'action.deal.critical.strike',
-                'threshold' => 100,
+                'rule' => 'gte:sum,100',
             ],
             [
                 'custom_id' => 'criterion.play.as.cleric',
                 'name' => 'criterion.play.as.cleric',
                 'custom_action_id' => 'action.play.as.cleric',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.play.as.rogue',
                 'name' => 'criterion.play.as.rogue',
                 'custom_action_id' => 'action.play.as.rogue',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.play.as.warrior',
                 'name' => 'criterion.play.as.warrior',
                 'custom_action_id' => 'action.play.as.warrior',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.play.as.wizard',
                 'name' => 'criterion.play.as.wizard',
                 'custom_action_id' => 'action.play.as.wizard',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.play.as.dwarf',
                 'name' => 'criterion.play.as.dwarf',
                 'custom_action_id' => 'action.play.as.dwarf',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.play.as.elf',
                 'name' => 'criterion.play.as.elf',
                 'custom_action_id' => 'action.play.as.elf',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.play.as.halfling',
                 'name' => 'criterion.play.as.halfling',
                 'custom_action_id' => 'action.play.as.halfling',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.play.as.human',
                 'name' => 'criterion.play.as.human',
                 'custom_action_id' => 'action.play.as.human',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.die.once',
                 'name' => 'criterion.die.once',
                 'custom_action_id' => 'action.die',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.die.10.times',
                 'name' => 'criterion.die.10.times',
                 'custom_action_id' => 'action.die',
-                'threshold' => 10,
+                'rule' => 'gte:sum,10',
             ],
             [
                 'custom_id' => 'criterion.slay.100.champions',
                 'name' => 'criterion.slay.100.champions',
                 'custom_action_id' => 'action.slay.champion',
-                'threshold' => 100,
+                'rule' => 'gte:sum,100',
             ],
             [
                 'custom_id' => 'criterion.find.50.secret.rooms',
                 'name' => 'criterion.find.50.secret.rooms',
                 'custom_action_id' => 'action.find.secret.room',
-                'threshold' => 50,
+                'rule' => 'gte:sum,50',
             ],
             [
                 'custom_id' => 'criterion.open.100.chests',
                 'name' => 'criterion.open.100.chests',
                 'custom_action_id' => 'action.open.chest',
-                'threshold' => 100,
+                'rule' => 'gte:sum,100',
             ],
             [
                 'custom_id' => 'criterion.dodge.500.attacks',
                 'name' => 'criterion.dodge.500.attacks',
                 'custom_action_id' => 'action.dodge.attack',
-                'threshold' => 500,
+                'rule' => 'gte:sum,500',
             ],
             [
                 'custom_id' => 'criterion.sell.100.items',
                 'name' => 'criterion.sell.100.items',
                 'custom_action_id' => 'action.sell.item',
-                'threshold' => 100,
+                'rule' => 'gte:sum,100',
             ],
             [
                 'custom_id' => 'criterion.use.100.potions',
                 'name' => 'criterion.use.100.potions',
                 'custom_action_id' => 'action.use.potion',
-                'threshold' => 100,
+                'rule' => 'gte:sum,100',
             ],
             [
                 'custom_id' => 'criterion.defeat.ethereal.queen.as.cleric',
                 'name' => 'criterion.defeat.ethereal.queen.as.cleric',
                 'custom_action_id' => 'action.defeat.ethereal.queen.as.cleric',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.defeat.ethereal.queen.as.rogue',
                 'name' => 'criterion.defeat.ethereal.queen.as.rogue',
                 'custom_action_id' => 'action.defeat.ethereal.queen.as.rogue',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.defeat.ethereal.queen.as.warrior',
                 'name' => 'criterion.defeat.ethereal.queen.as.warrior',
                 'custom_action_id' => 'action.defeat.ethereal.queen.as.warrior',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
             [
                 'custom_id' => 'criterion.defeat.ethereal.queen.as.wizard',
                 'name' => 'criterion.defeat.ethereal.queen.as.wizard',
                 'custom_action_id' => 'action.defeat.ethereal.queen.as.wizard',
-                'threshold' => 1,
+                'rule' => 'gte:sum,1',
             ],
         ];
 
@@ -1178,19 +1181,6 @@ class PrepGame extends AbstractTask
                 'type' => 'standard',
                 'is_secret' => false,
                 'points' => 15,
-                'criteria_group' => [
-                    'criteria' => [
-                        'criterion.disarm.5.traps',
-                    ],
-                ],
-            ],
-            [
-                'custom_id' => 'achievement.trap.happy',
-                'name' => 'achievement.trap.happy',
-                'description' => 'disarm five traps during a single session',
-                'type' => 'session',
-                'is_secret' => false,
-                'points' => 25,
                 'criteria_group' => [
                     'criteria' => [
                         'criterion.disarm.5.traps',

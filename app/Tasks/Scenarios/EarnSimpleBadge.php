@@ -17,6 +17,6 @@ class EarnSimpleBadge extends AbstractTask
     {
         $badges = $this->r4nkt->playerBadges('player.earn.simple.badge');
 
-        return ((count($badges) === 1) && ($badges[0]->custom_achievement_id !== 'achievement.slay.a.red.dragon'));
+        return ((count($badges) === 1) && ($badges[0]->custom_achievement_id === 'achievement.slay.a.red.dragon'));
     }
 }

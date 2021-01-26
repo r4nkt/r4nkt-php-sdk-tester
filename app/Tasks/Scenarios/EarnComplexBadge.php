@@ -91,6 +91,30 @@ class EarnComplexBadge extends AbstractTask
     {
         $badges = $this->r4nkt->playerBadges($this->playerId);
 
-        return count($badges) === 1;
+        // achievement.winner
+        // achievement.sherlock
+        // achievement.jack.sparrow
+        // achievement.doorman
+        // achievement.bull.in.china.shop
+        // achievement.caution
+        // achievement.extreme.caution
+        // achievement.sir.traps.a.lot
+        // achievement.smooth.operator
+        // achievement.puzzler
+        // achievement.master.puzzler
+        // achievement.true.cleric
+        // achievement.true.rogue
+        // achievement.classicist
+        // achievement.true.warrior
+        // achievement.conqueror
+        // achievement.champion
+        // achievement.true.wizard
+        // achievement.fred.astair
+        // achievement.bruce.lee
+        // achievement.slay.a.red.dragon
+        // achievement.worm.slayer
+        // achievement.master.player
+
+        return count($badges) === 23;
     }
 }

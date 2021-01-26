@@ -3,6 +3,7 @@
 namespace App\Tasks\Scenarios;
 
 use App\Tasks\AbstractTask;
+use R4nkt\PhpSdk\QueryParams\AchievementsParams;
 use R4nkt\PhpSdk\R4nkt;
 
 class ClearAll extends AbstractTask
@@ -11,8 +12,10 @@ class ClearAll extends AbstractTask
 
     protected function runTask()
     {
+        $params = (new AchievementsParams())->withSecrets();
+
         do {
-            collect($resources = $this->r4nkt->achievements(1, 20, 'with'))->each(function ($resource) {
+            collect($resources = $this->r4nkt->achievements($params))->each(function ($resource) {
                 $resource->delete();
             });
         } while ($resources->total() > ($resources->to() - $resources->from()));
@@ -24,7 +27,7 @@ class ClearAll extends AbstractTask
         $this->deleteResources('players');
         $this->deleteResources('rewards');
 
-        $this->count = count($this->r4nkt->achievements(1, 20, 'with'));
+        $this->count = count($this->r4nkt->achievements($params));
         $this->count += count($this->r4nkt->actions());
         $this->count += count($this->r4nkt->criteria());
         $this->count += count($this->r4nkt->criteriaGroups());

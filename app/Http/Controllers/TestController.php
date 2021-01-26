@@ -26,6 +26,7 @@ class TestController extends Controller
     public function __invoke(Request $request)
     {
         $this->prep();
+
         $this->testAchievements();
         $this->testActions();
         $this->testCriteria();
