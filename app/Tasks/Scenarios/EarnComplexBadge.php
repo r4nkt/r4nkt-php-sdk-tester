@@ -65,10 +65,10 @@ class EarnComplexBadge extends AbstractTask
         //  - criterion.defeat.ethereal.queen.as.rogue
         //  - criterion.defeat.ethereal.queen.as.warrior
         //  - criterion.defeat.ethereal.queen.as.wizard
-        $this->r4nkt->reportActivity($this->playerId, 'action.defeat.ethereal.queen.as.cleric');
-        $this->r4nkt->reportActivity($this->playerId, 'action.defeat.ethereal.queen.as.rogue');
-        $this->r4nkt->reportActivity($this->playerId, 'action.defeat.ethereal.queen.as.warrior');
-        $this->r4nkt->reportActivity($this->playerId, 'action.defeat.ethereal.queen.as.wizard');
+        $this->r4nkt->reportActivity($this->playerId, 'action.defeat.ethereal.queen', 1, ['class' => 'cleric']);
+        $this->r4nkt->reportActivity($this->playerId, 'action.defeat.ethereal.queen', 1, ['class' => 'rogue']);
+        $this->r4nkt->reportActivity($this->playerId, 'action.defeat.ethereal.queen', 1, ['class' => 'warrior']);
+        $this->r4nkt->reportActivity($this->playerId, 'action.defeat.ethereal.queen', 1, ['class' => 'wizard']);
 
         // criteria.group.monster.slayer
         //  - criterion.slay.100.champions
